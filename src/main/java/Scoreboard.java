@@ -42,6 +42,7 @@ public class Scoreboard {
     }
 
     public List<Player> getAllPlayers(){
+        Collections.sort(competitors);
         return competitors;
     }
 

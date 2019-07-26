@@ -1,4 +1,4 @@
-public class Player {
+public class Player implements Comparable<Player> {
     String  fullName;
     String nickName;
     Integer rating;
@@ -7,7 +7,7 @@ public class Player {
 
     public Player (String name, String nickName){
         fullName = name;
-        nickName = nickName;
+        this.nickName = nickName;
         rating = 500;
         wins = 0;
         losses = 0;
@@ -43,6 +43,10 @@ public class Player {
 
     public void incrementLosses() {
         this.losses++;
+    }
+
+    public int compareTo(Player other) {
+        return other.getRating() - this.getRating();
     }
 }
 
