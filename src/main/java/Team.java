@@ -1,9 +1,9 @@
 public class Team {
-    Player p1;
-    Player p2;
+    Player offense;
+    Player defense;
     String teamName;
-    public Team(Player p1,Player p2){
-        p1 = p1;
-        p2 = p2;
+    public Team(Player offense,Player defense){
+        offense = offense;
+        defense = defense;
     }
 }

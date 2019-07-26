@@ -1,29 +1,48 @@
 public class Player {
     String  fullName;
+    String nickName;
     Integer rating;
-    Integer gamesPlayed;
     Integer wins;
+    Integer losses;
 
-    public Player (String name){
+    public Player (String name, String nickName){
         fullName = name;
+        nickName = nickName;
         rating = 500;
-        gamesPlayed = 0;
         wins = 0;
+        losses = 0;
     }
 
     public String getFullName() {
         return fullName;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
     public Integer getRating() {
         return rating;
     }
 
-    public Integer getGamesPlayed() {
-        return gamesPlayed;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public Integer getWins() {
         return wins;
     }
+
+    public void incrementWins() {
+        this.wins++;
+    }
+
+    public Integer getLosses() {
+        return losses;
+    }
+
+    public void incrementLosses() {
+        this.losses++;
+    }
 }
+
