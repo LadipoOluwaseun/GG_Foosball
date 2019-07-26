@@ -15,23 +15,14 @@ public class Scoreboard {
         competitors.add(player);
     }
 
-    public void newTeam(Player offense, Player defense){
-        Team team = new Team(offense, defense);
-    }
-
-    public void twoVsTwo(Team yellow, Team black, Boolean yellowWinner){
-        if(yellowWinner){
-            calculateWin(yellow.offense);
-            calculateWin(yellow.defense);
-            calculateLoss(black.offense);
-            calculateLoss(black.defense);
-        }
-        else{
-            calculateWin(black.offense);
-            calculateWin(black.defense);
-            calculateLoss(yellow.offense);
-            calculateLoss(yellow.defense);
-        }
+    public void game(Player yellowOffense,
+                         Player yellowDefense,
+                         Player blackOffense,
+                         Player blackDefense){
+        calculateWin(yellowOffense);
+        calculateWin(yellowDefense);
+        calculateLoss(blackOffense);
+        calculateLoss(blackDefense);
     }
 
     public void calculateWin(Player winner){
@@ -48,5 +39,19 @@ public class Scoreboard {
         List arrangedCompetitors = new ArrayList();
         //TODO arrange competitors for display
         return competitors;
+    }
+
+    public List<Player> getAllPlayers(){
+        return competitors;
+    }
+
+    public Player getPlayerByName(String fullName){
+        Player playerToReturn = new Player("not", "found");
+        for(int i = 0; i < competitors.size(); i++){
+            if(competitors.get(i).getFullName().equals(fullName)){
+                playerToReturn = competitors.get(i);
+            }
+        }
+        return playerToReturn;
     }
 }
