@@ -22,7 +22,7 @@ public class Main {
             }
 
             scoreboard.newPlayer(req.queryParams("name"), req.queryParams("nickname"));
-            res.status(200);
+            res.status(201);
             return convertPlayerToJson(scoreboard.getPlayerByName(req.queryParams("name")));
         });
 
@@ -32,9 +32,16 @@ public class Main {
             Player p2 = scoreboard.getPlayerByName(req.queryParams("id2"));
             Player p3 = scoreboard.getPlayerByName(req.queryParams("id3"));
             Player p4 = scoreboard.getPlayerByName(req.queryParams("id4"));
-            scoreboard.game(p1, p2, p3, p4);
-            res.status(200);
-            return "{ \"status\": \"acknowledged\" }";
+            if(scoreboard.isValidGame(p1, p2, p3, p4)) {
+                scoreboard.game(p1, p2, p3, p4);
+                res.status(201);
+                return "{ \"status\": \"acknowledged\" }";
+            }
+            else {
+                res.status(2403);
+                return "{ \"status\": \"failure\" }";
+            }
+
         });
 
     }

@@ -25,6 +25,22 @@ public class Scoreboard {
         calculateLoss(blackDefense);
     }
 
+    public boolean isValidGame(Player yellowOffense,
+                            Player yellowDefense,
+                            Player blackOffense,
+                            Player blackDefense) {
+        if(yellowOffense.getFullName() == "not")
+            return false;
+        else if(yellowDefense.getFullName() == "not")
+            return false;
+        else if(blackOffense.getFullName() == "not")
+            return false;
+        else if(blackDefense.getFullName() == "not")
+            return false;
+        return true;
+
+    }
+
     public void calculateWin(Player winner){
         winner.incrementWins();
         winner.setRating(winner.getRating() + 3);
@@ -38,6 +54,7 @@ public class Scoreboard {
     public List<Player> arrangeByRating(){
         List arrangedCompetitors = new ArrayList();
         //TODO arrange competitors for display
+        // Note: No longer needed since getAllPlayers sorts.
         return competitors;
     }
 
