@@ -16,7 +16,7 @@ public class Main {
 
         // Add a user
         post("/user/", (req, res) -> {
-            if(scoreboard.getPlayerByName(req.queryParams("name")) != null) {
+            if(scoreboard.getPlayerByName(req.queryParams("name")).getFullName() != "not") {
                 res.status(403);
                 return "{ \"status\": \"failure\" }";
             }
